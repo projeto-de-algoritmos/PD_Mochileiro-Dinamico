@@ -28,7 +28,40 @@ export default function Home() {
      * Produtos presentes na lista de produtos
      * @type {[{produto: String, peso: Number, valor: Number, icone: String}[]]}
      */
-    const [lista, setLista] = useState([])
+    const [lista, setLista] = useState([
+        {
+            produto: "Celuar",
+            peso: 1,
+            valor: 1,
+            icone: Produto.Celular
+        },
+        {
+            produto: "Notebook",
+            peso: 2,
+            valor: 6,
+            icone: Produto.Notebook
+        },
+        {
+            produto: "Arco",
+            peso: 5,
+            valor: 18,
+            icone: Produto.Arco
+        },
+        {
+            produto: "Katana",
+            peso: 6,
+            valor: 22,
+            icone: Produto.Katana
+        },
+        {
+            produto: "Telescopio",
+            peso: 7,
+            valor: 28,
+            icone: Produto.Telescopio
+        },
+    ])
+
+    let memoization
 
     const dados = [
         {key:'0', value:'Arco', icon: Produto.Arco},
@@ -58,19 +91,59 @@ export default function Home() {
             return
         }
 
-        let capacidade
+        let linhas = lista.length // Quantidade de produtos
+        let colunas = Number(capacidadeDaMochila) // Quantidade de pesos
 
-        let acumulado = 0
+        memoization = new Array(linhas+1)
 
+        for (let i = 0; i <= linhas; i++) {
+            memoization[i] = new Array(colunas+1)    
+        }
         
-        setValorTotal(acumulado)
-        setExibeResultado(true)
         setX(350)
         setY(300)
+
+        setValorTotal(knapsack(linhas, colunas))
+        findSolution(linhas, colunas)
+
+        setExibeResultado(true)
     }
 
-    const knapsack = () => {
+    /**
+     * Algoritmo recursivo da mochila
+     * @param {Number} i - Quantidade de produtos
+     * @param {Number} w - Peso restante na mochila
+     * @returns {Number} Maior valor 
+     */
+    const knapsack = (i, w) => {
+        if (i == 0) {
+            return 0
+        }
 
+        if (lista[i-1].peso > w) {
+            return knapsack(i-1, w)
+        }
+        if (memoization[i][w] == undefined) {
+            memoization[i][w] = Math.max(lista[i-1].valor+knapsack(i-1, w-lista[i-1].peso), knapsack(i-1, w))
+        }
+        return memoization[i][w]
+    }
+
+    /**
+     * Adiciona os produtos na mochila
+     * @param {Number} i - Quantidade de produtos
+     * @param {Number} w - Peso restante na mochila
+     */
+    const findSolution = (i, w) => {
+        
+        while (i>0 || w>0) {
+            if (memoization[i][w] == memoization[i-1][w]) {
+                i--
+            } else {
+                i--
+                w -= lista[i-1].peso
+            }
+        }
     }
 
     /**
