@@ -28,40 +28,10 @@ export default function Home() {
      * Produtos presentes na lista de produtos
      * @type {[{produto: String, peso: Number, valor: Number, icone: String}[]]}
      */
-    const [lista, setLista] = useState([
-        {
-            produto: "Celuar",
-            peso: 1,
-            valor: 1,
-            icone: Produto.Celular
-        },
-        {
-            produto: "Notebook",
-            peso: 2,
-            valor: 6,
-            icone: Produto.Notebook
-        },
-        {
-            produto: "Arco",
-            peso: 5,
-            valor: 18,
-            icone: Produto.Arco
-        },
-        {
-            produto: "Katana",
-            peso: 6,
-            valor: 22,
-            icone: Produto.Katana
-        },
-        {
-            produto: "Telescopio",
-            peso: 7,
-            valor: 28,
-            icone: Produto.Telescopio
-        },
-    ])
+    const [lista, setLista] = useState([])
 
     let memoization
+    let onFunction = false
 
     const dados = [
         {key:'0', value:'Arco', icon: Produto.Arco},
@@ -99,9 +69,6 @@ export default function Home() {
         for (let i = 0; i <= linhas; i++) {
             memoization[i] = new Array(colunas+1)    
         }
-        
-        setX(350)
-        setY(300)
 
         setValorTotal(knapsack(linhas, colunas))
         findSolution(linhas, colunas)
@@ -136,12 +103,14 @@ export default function Home() {
      */
     const findSolution = (i, w) => {
         
-        while (i>0 || w>0) {
+        while (i>0 && w>0) {
             if (memoization[i][w] == memoization[i-1][w]) {
                 i--
             } else {
+                let pegou = [...lista.splice(i-1, 1)]
+                produtos.push(...pegou)
                 i--
-                w -= lista[i-1].peso
+                w -= pegou[0].peso
             }
         }
     }
@@ -182,6 +151,7 @@ export default function Home() {
                             setExibeResultado(false)
                             setProdutos([])
                             setValorTotal(0)
+                            onFunction = false
                         }}
                         style={styles.botaoX}
                     />
@@ -420,8 +390,11 @@ export default function Home() {
                     setX(e.nativeEvent.pageX)
                     setY(e.nativeEvent.pageY)
                 }}
-                onTouchEnd={() => {
-                    if(y >= 680) {
+                onTouchEnd={(e) => {
+                    if (y >= 680 && onFunction == false) {
+                        onFunction = true
+                        setX(350)
+                        setY(300)
                         calculaResultado()
                     }
                 }}
