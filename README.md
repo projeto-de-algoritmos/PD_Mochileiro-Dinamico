@@ -12,12 +12,10 @@
 Esse projeto tem por objetivo apresentar o Algoritmo da Mochila (Programação Dinâmica) por meio de um aplicativo Android, que consite em adicionar produtos em uma lista e, depois, tranferí-los para uma mochila, que pode não comportar todo o peso da mercadoria, de modo a possuir a combinação de maior preço. 
 
 ## Screenshots
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/393ab7d9-c17b-4be4-80f5-5e48ea6ce588" width="200">
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/15eeaf78-413c-4d49-97a8-b26edf6a2107" width="200">
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/beb7cb63-80d1-400a-b033-f297836ecde9" width="200">
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/082ed517-d5f0-4606-bc70-c3ee104755de" width="200">
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/ffbca374-4645-4b6a-bd81-5c849c1dc4bf" width="200">
-<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/1f675be4-a0cc-47e4-9a76-fe50d050fe21" width="200">
+<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/072b20c4-ed21-4644-bf2c-ab5a976e13b9" width="200">
+<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/1e3e31a6-be9a-4612-b3ca-6f0883d5f4aa" width="200">
+<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/f675297e-e1bf-47fe-8b86-da6a0862bc16" width="200">
+<img src="https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/4350929e-301b-40f3-a941-bc204255bcdc" width="200">
 
 ## Instalação 
 **Linguagem**: Javascript<br>
@@ -47,4 +45,5 @@ npm start
 
 ## Uso 
 
+https://github.com/projeto-de-algoritmos/PD_Mochileiro-Dinamico/assets/73364666/9b8dc108-0220-4a06-a913-a7889005fe33
 
